@@ -158,20 +158,21 @@ async function uploadPosts(tag = '') {
 
 uploadPosts();
 
-const searchInput = document.getElementById("searchInput");
-
-function performSearch() {
-  const searchValue = searchInput.value.trim();
-  if (searchValue) {
-    console.log("Searching for:", searchValue);
-  } else {
-    console.log("Please enter a search term.");
-  }
-}
-
-searchInput.addEventListener("keydown", function(event) {
-    console.log(event.key);
-  if (event.key === "Enter") {
-    performSearch();
-  }
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById("searchInput");
+    function performSearch() {
+        const searchValue = searchInput.value.trim();
+        if (searchValue) {
+            console.log("Searching for:", searchValue);
+            sendContentAsURL(searchValue);
+        } else {
+            console.log("Please enter a search term.");
+        }
+    }
+    searchInput.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            performSearch();
+        }
+    })
 });
+
