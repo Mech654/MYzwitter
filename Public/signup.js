@@ -24,6 +24,7 @@ function verifyRegisterValues(email, username, password, confirmPassword) {
 
 // Main signUp function
 async function signUp() {
+    console.log('Signing up...');
     const email = document.getElementById('email').value;
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
@@ -47,9 +48,8 @@ async function register(email, username, password) {
     try {
         const success = await registerServer(email, username, password);
         return success;
+        
     } catch (error) {
-        console.error('Registration error:', error);
-        alert('There was an error with the registration. Please try again.');
         return false;
     }
     
@@ -62,25 +62,34 @@ function registerServer(email, username, password) {
         formData.append('email', email);
         formData.append('username', username);
         formData.append('password', password);
-
-        console.log('Form Data:', formData);
+        console.log('Sending form data:', formData);
+        console.log('Sending form data:', formData.get('email'));
 
         // Send data using fetch (POST method)
-        fetch('signup.php', {
+        fetch('../Server/register.php', {
             method: 'POST',
             body: formData // Send the form data as multipart/form-data
         })
         .then(response => {
-            console.log('Response:', response);
-            return response.json(); // Expect JSON response
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.status}`);
+            }
+
+            // Ensure the response body is not empty
+            return response.text().then(text => {
+                try {
+                    return text ? JSON.parse(text) : {}; // If empty, return an empty object
+                } catch (e) {
+                    throw new Error('Failed to parse JSON');
+                }
+            });
         })
         .then(data => {
-            console.log('Data:', data);
+            console.log('Server Response:', data); // Log the response to check
+
             if (data.success) {
-                alert('Registration successful');
                 resolve(true); // Resolve the promise with success
             } else {
-                alert('Registration failed: ' + data.error);
                 resolve(false); // Resolve with failure
             }
         })
@@ -90,6 +99,7 @@ function registerServer(email, username, password) {
         });
     });
 }
+
 
 // Pre-fill the form with test data (for testing purposes)
 document.addEventListener('DOMContentLoaded', (event) => {

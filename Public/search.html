@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zwitter</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
-    <script src="Postgenerator.js"></script>
+    <link rel="stylesheet" href="search.css">
+    <script src="script.js"></script>
     <script src="TrendGenerator.js"></script>
+    <script src="search.js"></script>
 </head>
 
 
 <body>
     <button id="burgerButton"><img src="Resources/Burger-button.webp" alt="Burger Button"></button>
-    
     <div class="LeftPanel">
         <div id="logo" class="leftPanelItems">
             <a href="index.php"><img class="LeftPanelImages" src="Resources/zwitter.png" alt="Zwitter"></a>
@@ -53,29 +52,12 @@
         </div>
     </div>
     <div class="MainPanel">
-        <div class="MainPanelHeader">
-            <div class="ForYou">
-                <p>For You</p>
-            </div>
-            <div class="Following">
-                <p>Following</p>
-            </div>
-        </div>
-
-        <div style="height: 0rem;"></div>
-
-     
-        <form id="postForm">
-            <textarea id="postContent" placeholder="What's happening?" required></textarea>
-            <textarea id="tags" placeholder="Add tags here" required></textarea>
-            <input type="text" id="youtubeLink" placeholder="Paste YouTube link here">
-            <button type="submit">Post</button>
-        </form>
-        
         <div id="posts"></div>
     </div>
-    <div class="search-container"> <span class="search-icon">🔍</span> <input type="text" class="search-input" placeholder="Search Zwitter"> </div>
-
+    <div class="search-container">
+        <span class="search-icon">🔍</span>
+        <input type="text" class="search-input" placeholder="Search a tag" id="searchInput">
+      </div>
     <div class="RightPanel">
         <div id="trending" class="rightPanelItems">
             <li id="trending_List">

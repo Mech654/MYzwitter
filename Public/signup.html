@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to Zwitter</title>
+    <link rel="stylesheet" href="signup.css">
+    <script src="signup.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <img src="Resources/zwitter.png">
+        <div class="login-container">
+            <h1>Zwitter</h1>
+            <input id="email" type="email" placeholder="Enter Email" name="email" required>
+            <input id="username" type="text" name="username" placeholder="Username" required>
+            <input id="password" type="password" placeholder="Enter Password" name="psw" required>
+            <input id="password-repeat" type="password" placeholder="Repeat Password" name="psw-repeat" required>
+
+            <label id="ToS">
+            <br>
+            <p>By creating an account you agree to our <a href="#" style="color:dodgerblue; text-decoration: none;">Terms of Services</a>.</p>
+            </label>
+
+            <div class="clearfix">
+            <button type="button" class="signupbtn" onclick="signUp()">Register</button>
+            <button style="margin-top: 5px;" type="button" class="cancelbtn" onclick="cancelReverse()">Cancel</button>
+            
+            <p>Already got an account? You can then log in <a href="login.html" style="color:dodgerblue; text-decoration: none;">here</a>.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

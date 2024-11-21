@@ -1,7 +1,7 @@
-
+isSearch = false;
 
 if (localStorage.getItem('user') === null) {
-    window.location.href = 'logout.php';
+    //window.location.href = 'logout.html';
 }
 
 
@@ -47,48 +47,16 @@ document.addEventListener('DOMContentLoaded', function() {
     
 });
 
+function sendContentAsURL(paragraph) {
+    // Get the content of the paragraph
+    const content = paragraph.textContent || paragraph.innerText;
 
+    // Encode the content to safely pass it in a URL
+    const encodedContent = encodeURIComponent(content);
 
+    // Construct the URL with the content as a query parameter
+    const url = `/NewZwitter/MYzwitter/Public/search.html?content=${encodedContent}`;
 
-
-
-
-
-function selectParagraphsInTendingList() {
-    const tendingList = document.getElementById('tending_list');
-    if (tendingList) {
-        const paragraphs = tendingList.getElementsByTagName('p');
-        return Array.from(paragraphs);
-    }
-    return [];
+    // Redirect to the new URL
+    window.location.href = url;
 }
-
-
-
-let trending = ['#hey', '#hello', '#hi', '#howdy', '#hola', '#bonjour', '#ciao', '#hallo', '#salut', '#ola']; // Custom trends, will be fetched from the server later
-
-
-function getMostTrending() {
-    return trending;
-}
-
-
-function putTrendInList() {
-    let x = 1;
-    const tendingList = document.getElementById('trending_List');
-    const trending = getMostTrending();
-    trending.forEach(trend => {
-        const p = document.createElement('p');
-        p.textContent =  x + ". __  " + "" + trend;
-        p.classList.add('trending_p'); 
-
-        tendingList.appendChild(p);
-        x++;
-    });
-}
-
-
-putTrendInList();
-
-
-
