@@ -84,11 +84,9 @@ async function getPost(tag = '') {
     if (tag !== '') {
         decodedContent = tag;
     }
-    
-
     const formData = new FormData();
     formData.append('message', decodedContent);
-    let url = 'search.php';
+    let url = 'search_filter.php';
     let options = {
         method: 'POST',
         body: formData
@@ -122,10 +120,10 @@ async function getPost(tag = '') {
 
 
 
-async function uploadPosts(tag) {
+async function uploadPosts(tag = '') {
 
     console.log("uploading posts");
-    const raw_data = await getPost();
+    const raw_data = await getPost(tag);
 
     if (raw_data) {
         // Access posts from the correct field: raw_data.posts
@@ -155,7 +153,6 @@ async function uploadPosts(tag) {
     } else {
         console.log('No post data returned');
     }
-    end = true;
 }
 
 
