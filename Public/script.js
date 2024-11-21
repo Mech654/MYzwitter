@@ -1,11 +1,9 @@
-isSearch = false;
-
 if (localStorage.getItem('user') === null) {
-    //window.location.href = 'logout.html';
+    window.location.href = 'logout.html';
 }
 
 
-
+//version 1.2;
 
 const burgerButton = document.getElementById('burgerButton');
 const leftPanel = document.querySelector('.LeftPanel');

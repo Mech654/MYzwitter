@@ -24,7 +24,7 @@
             <p>Home</p>
         </div>
         <div id="search" class="leftPanelItems">
-            <img class="LeftPanelImages" src="Resources/Menu-Search.png" alt="Search">
+        <a href="search.html"><img class="LeftPanelImages" src="Resources/Menu-Search.png" alt="Search"></a>
             <p>Search</p>
         </div>
         <div id="notification" class="leftPanelItems">

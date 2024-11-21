@@ -160,19 +160,31 @@ uploadPosts();
 
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById("searchInput");
+
     function performSearch() {
         const searchValue = searchInput.value.trim();
         if (searchValue) {
             console.log("Searching for:", searchValue);
-            sendContentAsURL(searchValue);
+
+            // Encode the value of the input field (not the input element itself)
+            const tagg = encodeURIComponent(searchValue);
+
+            // Construct the URL with the content as a query parameter
+            const url = `/NewZwitter/MYzwitter/Public/search.html?content=${tagg}`;
+
+            // Redirect to the new URL
+            window.location.href = url;
         } else {
             console.log("Please enter a search term.");
         }
     }
+
     searchInput.addEventListener("keydown", function(event) {
         if (event.key === "Enter") {
             performSearch();
         }
     })
 });
+
+
 

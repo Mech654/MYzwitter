@@ -205,7 +205,7 @@ async function DownloadPosts(postContent, tags, videoId) {
     formData.append('videoId', videoId);
 
     try {
-        const response = await fetch('../Server/download.php', {
+        const response = await fetch('download.php', {
             method: 'POST',
             body: formData
         });

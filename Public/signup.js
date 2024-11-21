@@ -38,7 +38,7 @@ async function signUp() {
         // If registration is successful, redirect user
         if (success) {
             localStorage.setItem('user', username);
-            window.location.href = "index.html"; // Redirect to homepage or user dashboard
+            window.location.href = "index.php"; // Redirect to homepage or user dashboard
         }
     }
 }
@@ -57,6 +57,7 @@ async function register(email, username, password) {
 
 // Function to handle server-side registration via fetch
 function registerServer(email, username, password) {
+    console.log('Registering user...');
     return new Promise((resolve, reject) => {
         const formData = new FormData();
         formData.append('email', email);
@@ -66,7 +67,7 @@ function registerServer(email, username, password) {
         console.log('Sending form data:', formData.get('email'));
 
         // Send data using fetch (POST method)
-        fetch('../Server/register.php', {
+        fetch('register.php', {
             method: 'POST',
             body: formData // Send the form data as multipart/form-data
         })

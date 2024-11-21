@@ -3,7 +3,7 @@ function loginBtn() {
     const Password = document.getElementById('password').value;
     login(User, Password).then(Nocap => {
         if (Nocap) {
-            window.location.href = "index.html";  // Redirect on successful login
+            window.location.href = "index.php";  // Redirect on successful login
         } else {
             alert('Login failed');
         }
@@ -16,7 +16,7 @@ async function login(username, password) {
     formData.append('password', password);
 
     try {
-        const response = await fetch('../Server/account_login.php', {
+        const response = await fetch('account_login.php', {
             method: 'POST',
             body: formData  // Remove Content-Type header when using FormData
         });
@@ -24,7 +24,6 @@ async function login(username, password) {
         if (response.ok) {
             const data = await response.json();  // Parse the JSON response
             if (data.success) {  // Check for success flag in response
-                alert('Login successful');
                 return true;  // Successful login
             } else {
                 // Handle login failure based on server response
